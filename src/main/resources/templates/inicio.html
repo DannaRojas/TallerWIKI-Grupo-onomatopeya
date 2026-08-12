@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wiki del proyecto del grupo Onomatopeya">
+    <title>Inicio - DevWiki</title>
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #fafafa;
+            color: #222222;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: #dddddd;
+            border-bottom: 1px solid #bbbbbb;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            overflow-x: auto;
+        }
+
+        nav a {
+            color: #222222;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            color: #555555;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            border-bottom: 2px solid #777777;
+            padding-bottom: 10px;
+        }
+
+        article {
+            margin-top: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #cccccc;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="inicio.html" th:href="@{/}">Inicio</a>
+        <a href="arquitectura.html" th:href="@{/arquitectura}">Arquitectura</a>
+        <a href="#proyecto">Proyecto</a>
+        <a href="contacto.html" th:href="@{/contacto}">Contáctanos</a>
+    </nav>
+
+    <main>
+        <h1>DevWiki - Grupo Onomatopeya</h1>
+        <p>
+            Esta wiki documenta el proyecto semestral de Desarrollo Web y el
+            avance realizado por el grupo Onomatopeya.
+        </p>
+
+        <article id="proyecto">
+            <h2>¿Qué es el proyecto?</h2>
+            <p>
+                El proyecto consiste en crear un Sistema de Gestión de Procesos
+                multiempresa. Cada organización tendrá su propio espacio para
+                registrar usuarios y administrar sus procesos empresariales.
+            </p>
+            <p>
+                La información pertenece a cada empresa, por lo que los usuarios
+                solo podrán consultar y modificar los datos autorizados para su
+                organización.
+            </p>
+        </article>
+
+        <article>
+            <h2>¿Qué podrá hacer el sistema?</h2>
+            <ul>
+                <li>Registrar empresas, usuarios y roles de acceso.</li>
+                <li>Crear, editar, consultar y desactivar procesos.</li>
+                <li>Guardar el nombre, descripción, categoría y estado de cada proceso.</li>
+                <li>Modelar procesos con actividades, decisiones, roles y participantes.</li>
+                <li>Consultar el historial de cambios de los procesos.</li>
+            </ul>
+        </article>
+
+        <article>
+            <h2>Grupo Onomatopeya</h2>
+            <p>
+                Somos un grupo de estudiantes de Desarrollo Web. Durante el semestre
+                construiremos el proyecto de forma incremental y registraremos en
+                esta wiki las decisiones, la arquitectura y los avances del equipo.
+            </p>
+            <p>
+                Organizamos las tareas en un tablero Kanban y usamos reuniones daily
+                para compartir avances, planear el trabajo y comunicar bloqueos.
+            </p>
+        </article>
+    </main>
+</body>
+</html>
