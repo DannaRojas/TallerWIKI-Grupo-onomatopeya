@@ -4,27 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevWiki</title>
+    <link rel="stylesheet" th:href="@{/css/menu.css}">
 
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             scroll-behavior: smooth;
-        }
-
-        nav {
-            background-color: #d9d9d9;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            overflow-x: auto;
-        }
-
-        nav a {
-            color: #222222;
-            text-decoration: none;
-            white-space: nowrap;
         }
 
         section {
@@ -35,10 +21,10 @@
 </head>
 
 <body>
-    <nav>
-        <a href="pagina.html" th:href="@{/}">Inicio</a>
+    <nav class="menu-superior">
+        <a class="activo" href="pagina.html" th:href="@{/}">Inicio</a>
         <a href="arquitectura.html" th:href="@{/arquitectura}">Arquitectura</a>
-        <a href="#historias">Historias de usuario</a>
+        <a href="historias.html" th:href="@{/historias}">Historias de usuario</a>
         <a href="contacto.html" th:href="@{/contacto}">Contáctanos</a>
     </nav>
 

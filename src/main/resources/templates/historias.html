@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historias de usuario - DevWiki</title>
+    <link rel="stylesheet" th:href="@{/css/historias.css}">
+    <link rel="stylesheet" th:href="@{/css/menu.css}">
+</head>
+
+<body>
+    <nav class="menu-superior">
+        <a href="pagina.html" th:href="@{/}">Inicio</a>
+        <a href="arquitectura.html" th:href="@{/arquitectura}">Arquitectura</a>
+        <a class="activo" href="historias.html" th:href="@{/historias}">Historias de usuario</a>
+        <a href="contacto.html" th:href="@{/contacto}">Contáctanos</a>
+    </nav>
+
+    <main>
+        <h1 th:text="${titulo}">Historias de usuario</h1>
+        <p class="introduccion" th:text="${descripcion}">
+            Historias de usuario del proyecto Editor y visualizador de procesos.
+        </p>
+
+        <section>
+            <h2>Gestión de empresas y usuarios</h2>
+            <ul>
+                <li th:each="historia : ${usuarios}" th:text="${historia}">
+                    HU-01 · Registro de empresa
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Gestión de procesos</h2>
+            <ul>
+                <li th:each="historia : ${procesos}" th:text="${historia}">
+                    HU-04 · Crear proceso
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Actividades, arcos y gateways</h2>
+            <ul>
+                <li th:each="historia : ${modelado}" th:text="${historia}">
+                    HU-08 · Crear actividad
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Roles del proceso</h2>
+            <ul>
+                <li th:each="historia : ${roles}" th:text="${historia}">
+                    HU-17 · Crear rol de proceso
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Pools y lanes</h2>
+            <p>Organizan los participantes y responsables de cada actividad.</p>
+            <ul>
+                <li th:each="historia : ${pools}" th:text="${historia}">
+                    HU-21 · Configurar pool por empresa
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Mensajes entre procesos</h2>
+            <p>Representan la comunicación entre procesos y sistemas externos.</p>
+            <ul>
+                <li th:each="historia : ${mensajes}" th:text="${historia}">
+                    HU-25 · Enviar mensaje entre procesos
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

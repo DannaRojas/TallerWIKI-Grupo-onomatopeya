@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contáctenos — Wiki</title>
     <link rel="stylesheet" th:href="@{/css/contacto.css}">
+    <link rel="stylesheet" th:href="@{/css/menu.css}">
 </head>
 <body class="contacto-page">
+
+<nav class="menu-superior">
+    <a th:href="@{/}">Inicio</a>
+    <a th:href="@{/arquitectura}">Arquitectura</a>
+    <a th:href="@{/historias}">Historias de usuario</a>
+    <a class="activo" th:href="@{/contacto}">Contáctanos</a>
+</nav>
 
 <header class="contacto-header">
     <a href="/" class="contacto-header__back">← Volver al inicio</a>
