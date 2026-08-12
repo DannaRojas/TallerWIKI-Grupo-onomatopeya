@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contáctenos — Wiki</title>
+    <link rel="stylesheet" th:href="@{/css/contacto.css}">
+</head>
+<body class="contacto-page">
+
+<header class="contacto-header">
+    <a href="/" class="contacto-header__back">← Volver al inicio</a>
+    <h1>Contáctenos</h1>
+    <p class="contacto-header__lead">
+        ¿Tienes dudas o comentarios sobre esta Wiki? Escríbenos y te responderemos pronto.
+    </p>
+</header>
+
+<main class="contacto-main">
+    <!-- La acción queda lista para una futura integración con backend.
+         novalidate: las validaciones las controla contacto-validacion.js -->
+    <form id="contact-form" class="form" action="/contactenos" method="post" novalidate>
+
+        <div class="field">
+            <label for="nombre">Nombre completo <span class="req">*</span></label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana María Gómez" autocomplete="name">
+            <p class="field__error" id="error-nombre" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+            <label for="correo">Correo electrónico <span class="req">*</span></label>
+            <input type="text" id="correo" name="correo" placeholder="ana.gomez@correo.com" autocomplete="email">
+            <p class="field__error" id="error-correo" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+            <label for="telefono">Teléfono <span class="req">*</span></label>
+            <input type="text" id="telefono" name="telefono" placeholder="Solo números, 7 a 15 dígitos" autocomplete="tel">
+            <p class="field__error" id="error-telefono" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+            <label for="asunto">Asunto o motivo de contacto <span class="req">*</span></label>
+            <select id="asunto" name="asunto">
+                <option value="">Seleccione una opción</option>
+                <option value="soporte">Soporte técnico</option>
+                <option value="sugerencia">Sugerencia de contenido</option>
+                <option value="error">Reportar un error en la Wiki</option>
+                <option value="otro">Otro</option>
+            </select>
+            <p class="field__error" id="error-asunto" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+            <label for="mensaje">Mensaje <span class="req">*</span></label>
+            <textarea id="mensaje" name="mensaje" rows="5" maxlength="400"
+                      placeholder="Cuéntanos en qué podemos ayudarte (mínimo 20 caracteres)"></textarea>
+            <p class="field__hint" id="counter-mensaje">0 / 400 caracteres · faltan 20</p>
+            <p class="field__error" id="error-mensaje" aria-live="polite"></p>
+        </div>
+
+        <div class="form__feedback" id="form-feedback" aria-live="polite"></div>
+
+        <button type="submit" class="btn">Enviar mensaje</button>
+    </form>
+</main>
+
+<script th:src="@{/js/contacto-validacion.js}"></script>
+</body>
+</html>
