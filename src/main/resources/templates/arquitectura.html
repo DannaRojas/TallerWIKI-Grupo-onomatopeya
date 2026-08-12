@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquitectura - DevWiki</title>
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #fafafa;
+            color: #222222;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: #dddddd;
+            border-bottom: 1px solid #bbbbbb;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            overflow-x: auto;
+        }
+
+        nav a {
+            color: #222222;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            color: #555555;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            border-bottom: 2px solid #777777;
+            padding-bottom: 10px;
+        }
+
+        article {
+            margin-top: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #cccccc;
+        }
+
+        h2, h3 {
+            color: #333333;
+        }
+
+        pre {
+            background-color: #eeeeee;
+            border-left: 4px solid #888888;
+            padding: 15px;
+            overflow-x: auto;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="pagina.html" th:href="@{/}">Inicio</a>
+        <a href="arquitectura.html" th:href="@{/arquitectura}">Arquitectura</a>
+        <a href="pagina.html#historias" th:href="@{/#historias}">Historias de usuario</a>
+        <a href="contacto.html" th:href="@{/contacto}">Contáctanos</a>
+    </nav>
+
+    <main>
+        <h1 th:text="${titulo}">Arquitectura</h1>
+        <p class="introduccion" th:text="${descripcion}">
+            Organización principal de DevWiki y herramientas usadas en el proyecto.
+        </p>
+
+        <article>
+            <h2>Estructura del proyecto</h2>
+            <p>
+                Las carpetas separan el código Java, las vistas HTML, los estilos,
+                JavaScript y las pruebas.
+            </p>
+
+            <pre>origen/
+├── src/
+│   ├── main/
+│   │   ├── java/          Controladores y aplicación principal
+│   │   └── resources/
+│   │       ├── templates/ Vistas HTML con Thymeleaf
+│   │       ├── static/    Archivos CSS y JavaScript
+│   │       └── application.properties
+│   └── test/              Pruebas del proyecto
+├── Dockerfile             Creación del contenedor
+├── pom.xml                Dependencias de Maven
+└── README.md              Información del proyecto</pre>
+
+            <h3>Controladores</h3>
+            <p>
+                Los controladores reciben las solicitudes que hace el usuario desde
+                el navegador y deciden qué página se debe mostrar.
+            </p>
+
+            <p>
+                <strong>InicioController:</strong> maneja la ruta <strong>/</strong>.
+                Cuando el usuario entra a la página principal, este controlador
+                devuelve la vista <strong>pagina.html</strong>.
+            </p>
+
+            <p>
+                <strong>ContactoController:</strong> maneja la ruta
+                <strong>/contacto</strong>. Cuando el usuario selecciona Contáctanos,
+                este controlador devuelve la vista <strong>contacto.html</strong>.
+            </p>
+
+            <h3>Vistas</h3>
+            <p>
+                Las vistas están guardadas en la carpeta
+                <strong>src/main/resources/templates</strong>. Son archivos HTML que
+                Thymeleaf procesa antes de enviarlos al navegador.
+            </p>
+
+            <ul>
+                <li>
+                    <strong>pagina.html:</strong> es la página de inicio y contiene
+                    el menú principal de navegación.
+                </li>
+                <li>
+                    <strong>arquitectura.html:</strong> documenta la organización,
+                    las dependencias y el funcionamiento del proyecto.
+                </li>
+                <li>
+                    <strong>contacto.html:</strong> contiene el formulario de contacto
+                    con los campos solicitados en el taller.
+                </li>
+            </ul>
+
+            <h3>Archivos estáticos</h3>
+            <p>
+                La carpeta <strong>src/main/resources/static</strong> contiene los
+                archivos que el navegador puede utilizar directamente. Dentro de
+                ella se separan los estilos CSS y el código JavaScript.
+            </p>
+
+            <ul>
+                <li>
+                    <strong>css/contacto.css:</strong> define la apariencia del
+                    formulario de contacto.
+                </li>
+                <li>
+                    <strong>js/contacto-validacion.js:</strong> comprueba los campos
+                    del formulario y muestra los mensajes de error.
+                </li>
+            </ul>
+
+            <h3>Flujo MVC</h3>
+            <p>
+                El proyecto sigue el patrón Modelo, Vista y Controlador. Primero, el
+                navegador solicita una ruta. Después, Spring busca el controlador
+                encargado de esa ruta. El controlador prepara los datos necesarios
+                y devuelve el nombre de una vista. Finalmente, Thymeleaf procesa el
+                HTML y Spring lo envía al navegador.
+            </p>
+
+            <ol>
+                <li>El usuario entra a una dirección desde el navegador.</li>
+                <li>El controlador recibe la solicitud HTTP.</li>
+                <li>El controlador prepara los datos del modelo.</li>
+                <li>Thymeleaf procesa la vista HTML seleccionada.</li>
+                <li>El navegador muestra el HTML resultante.</li>
+            </ol>
+
+            <h3>Spring Boot</h3>
+            <p>
+                Spring Boot es la herramienta que permite iniciar y ejecutar la
+                aplicación web. Incluye un servidor dentro del proyecto, por lo que
+                no es necesario instalar un servidor web por separado.
+            </p>
+
+            <p>
+                Cuando Spring Boot está funcionando, recibe las solicitudes del
+                navegador, busca el controlador correspondiente y le entrega la
+                solicitud. Después, el controlador selecciona una vista y Spring
+                Boot utiliza Thymeleaf para convertir esa plantilla en el HTML final.
+            </p>
+
+            <p>
+                Spring Boot también publica los archivos guardados en la carpeta
+                <strong>static</strong>. Por eso puede cargar los estilos CSS y el
+                JavaScript mediante rutas como <strong>/css/contacto.css</strong> y
+                <strong>/js/contacto-validacion.js</strong>.
+            </p>
+
+            <p>
+                Si un archivo HTML se abre sin ejecutar Spring Boot, el navegador
+                puede mostrar su contenido básico, pero no procesa las instrucciones
+                de Thymeleaf que comienzan con <strong>th:</strong>. Para comprobar
+                completamente la aplicación se debe iniciar Spring Boot y entrar por
+                una ruta definida en los controladores.
+            </p>
+
+            <h3>Configuración</h3>
+            <p>
+                El archivo <strong>application.properties</strong> guarda la
+                configuración de Spring Boot. Por ahora, indica que el nombre de la
+                aplicación es <strong>wikitaller</strong>. Más adelante puede incluir
+                otras configuraciones, como el puerto o la conexión a una base de datos.
+            </p>
+
+            <h3>Maven y pom.xml</h3>
+            <p>
+                Maven organiza la construcción del proyecto. El archivo
+                <strong>pom.xml</strong> indica la versión de Java, las dependencias
+                y los complementos necesarios. Cuando se ejecuta Maven, descarga las
+                librerías y crea el archivo ejecutable de la aplicación.
+            </p>
+
+            <h3>Dockerfile</h3>
+            <p>
+                El Dockerfile contiene los pasos para construir y ejecutar DevWiki
+                dentro de un contenedor. Primero usa Java 17 para compilar el proyecto
+                con Maven. Después copia el archivo generado a una imagen más pequeña
+                con Java 17, habilita el puerto 8080 y ejecuta la aplicación.
+            </p>
+
+            <h3>Pruebas</h3>
+            <p>
+                La carpeta <strong>src/test</strong> contiene las pruebas automáticas.
+                Estas pruebas permiten revisar que Spring Boot pueda cargar la
+                aplicación correctamente y ayudan a detectar errores antes del
+                despliegue.
+            </p>
+        </article>
+
+        <article>
+            <h2>Dependencias</h2>
+            <ul>
+                <li><strong>Thymeleaf:</strong> crea las vistas HTML dinámicas.</li>
+                <li><strong>Spring Web MVC:</strong> conecta las rutas, los controladores y las vistas.</li>
+                <li><strong>Lombok:</strong> reduce código repetitivo en las clases Java.</li>
+                <li><strong>Dependencias de prueba:</strong> permiten comprobar el funcionamiento del proyecto.</li>
+            </ul>
+        </article>
+    </main>
+</body>
+</html>
