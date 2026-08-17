@@ -17,7 +17,7 @@
 </nav>
 
 <header class="contacto-header">
-    <a href="/" class="contacto-header__back">← Volver al inicio</a>
+    <a th:href="@{/}" class="contacto-header__back">← Volver al inicio</a>
     <h1>Contáctenos</h1>
     <p class="contacto-header__lead">
         ¿Tienes dudas o comentarios sobre esta Wiki? Escríbenos y te responderemos pronto.
@@ -25,25 +25,31 @@
 </header>
 
 <main class="contacto-main">
-    <!-- La acción queda lista para una futura integración con backend.
-         novalidate: las validaciones las controla contacto-validacion.js -->
-    <form id="contact-form" class="form" action="/contactenos" method="post" novalidate>
+
+    <p class="form__feedback" th:if="${mensajeExito}" th:text="${mensajeExito}">
+        Tu mensaje fue enviado correctamente.
+    </p>
+
+    <form id="contact-form" th:action="@{/contacto}" method="post" novalidate>
 
         <div class="field">
             <label for="nombre">Nombre completo <span class="req">*</span></label>
-            <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana María Gómez" autocomplete="name">
+            <input type="text" id="nombre" name="nombre"
+                   placeholder="Ej: Ana María Gómez" autocomplete="name">
             <p class="field__error" id="error-nombre" aria-live="polite"></p>
         </div>
 
         <div class="field">
             <label for="correo">Correo electrónico <span class="req">*</span></label>
-            <input type="text" id="correo" name="correo" placeholder="ana.gomez@correo.com" autocomplete="email">
+            <input type="text" id="correo" name="correo"
+                   placeholder="ana.gomez@correo.com" autocomplete="email">
             <p class="field__error" id="error-correo" aria-live="polite"></p>
         </div>
 
         <div class="field">
             <label for="telefono">Teléfono <span class="req">*</span></label>
-            <input type="text" id="telefono" name="telefono" placeholder="Solo números, 7 a 15 dígitos" autocomplete="tel">
+            <input type="text" id="telefono" name="telefono"
+                   placeholder="Solo números, 7 a 15 dígitos" autocomplete="tel">
             <p class="field__error" id="error-telefono" aria-live="polite"></p>
         </div>
 
@@ -73,6 +79,6 @@
     </form>
 </main>
 
-<script th:src="@{/js/contacto-validacion.js}"></script>
+<!-- <script th:src="@{/js/contacto-validacion.js}"></script> -->
 </body>
 </html>

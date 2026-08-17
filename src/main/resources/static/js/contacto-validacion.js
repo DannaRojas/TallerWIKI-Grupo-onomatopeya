@@ -1,12 +1,12 @@
 /**
- * El formulario no envía datos a ningún backend todavía.
+ * Validaciones del formulario antes de enviarlo a Spring Boot.
  */
 
 (function () {
-    const form = document.getElementById('contact-form');
-    if (!form) return;
+    const formulario = document.getElementById('contact-form');
+    if (!formulario) return;
 
-    const fields = {
+    const campos = {
         nombre: document.getElementById('nombre'),
         correo: document.getElementById('correo'),
         telefono: document.getElementById('telefono'),
@@ -14,7 +14,7 @@
         mensaje: document.getElementById('mensaje'),
     };
 
-    const errorEls = {
+    const elementosError = {
         nombre: document.getElementById('error-nombre'),
         correo: document.getElementById('error-correo'),
         telefono: document.getElementById('error-telefono'),
@@ -22,101 +22,150 @@
         mensaje: document.getElementById('error-mensaje'),
     };
 
-    const counter = document.getElementById('counter-mensaje');
-    const feedback = document.getElementById('form-feedback');
+    const contador = document.getElementById('counter-mensaje');
+    const respuestaFormulario = document.getElementById('form-feedback');
 
-    const MENSAJE_MIN = 20;
-    const MENSAJE_MAX = 400;
+    const MENSAJE_MINIMO = 20;
+    const MENSAJE_MAXIMO = 400;
 
-    const validators = {
-        nombre: (value) => {
-            const trimmed = value.trim();
-            if (trimmed.length === 0) return 'El nombre es obligatorio.';
-            if (trimmed.length < 3) return 'El nombre debe tener al menos 3 caracteres.';
-            return null;
-        },
-        correo: (value) => {
-            const trimmed = value.trim();
-            if (trimmed.length === 0) return 'El correo electrónico es obligatorio.';
-            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!pattern.test(trimmed)) return 'Ingresa un correo válido, por ejemplo nombre@dominio.com.';
-            return null;
-        },
-        telefono: (value) => {
-            const trimmed = value.trim();
-            if (trimmed.length === 0) return 'El teléfono es obligatorio.';
-            if (!/^\d+$/.test(trimmed)) return 'El teléfono solo debe contener números.';
-            if (trimmed.length < 7 || trimmed.length > 15) return 'El teléfono debe tener entre 7 y 15 dígitos.';
-            return null;
-        },
-        asunto: (value) => {
-            if (!value) return 'Selecciona un asunto o motivo de contacto.';
-            return null;
-        },
-        mensaje: (value) => {
-            const trimmed = value.trim();
-            if (trimmed.length === 0) return 'El mensaje es obligatorio.';
-            if (trimmed.length < MENSAJE_MIN) {
-                const faltan = MENSAJE_MIN - trimmed.length;
-                return `Escribe al menos ${MENSAJE_MIN} caracteres. Te faltan ${faltan}.`;
+    const validadores = {
+        nombre: (valor) => {
+            const texto = valor.trim();
+
+            if (texto.length === 0) {
+                return 'El nombre es obligatorio.';
             }
-            if (trimmed.length > MENSAJE_MAX) return `El mensaje no puede superar ${MENSAJE_MAX} caracteres.`;
+
+            if (texto.length < 3) {
+                return 'El nombre debe tener al menos 3 caracteres.';
+            }
+
+            return null;
+        },
+
+        correo: (valor) => {
+            const texto = valor.trim();
+
+            if (texto.length === 0) {
+                return 'El correo electrónico es obligatorio.';
+            }
+
+            const patronCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!patronCorreo.test(texto)) {
+                return 'Ingresa un correo válido, por ejemplo nombre@dominio.com.';
+            }
+
+            return null;
+        },
+
+        telefono: (valor) => {
+            const texto = valor.trim();
+
+            if (texto.length === 0) {
+                return 'El teléfono es obligatorio.';
+            }
+
+            if (!/^\d+$/.test(texto)) {
+                return 'El teléfono solo debe contener números.';
+            }
+
+            if (texto.length < 7 || texto.length > 15) {
+                return 'El teléfono debe tener entre 7 y 15 dígitos.';
+            }
+
+            return null;
+        },
+
+        asunto: (valor) => {
+            if (!valor) {
+                return 'Selecciona un asunto o motivo de contacto.';
+            }
+
+            return null;
+        },
+
+        mensaje: (valor) => {
+            const texto = valor.trim();
+
+            if (texto.length === 0) {
+                return 'El mensaje es obligatorio.';
+            }
+
+            if (texto.length < MENSAJE_MINIMO) {
+                const faltan = MENSAJE_MINIMO - texto.length;
+                return `Escribe al menos ${MENSAJE_MINIMO} caracteres. Te faltan ${faltan}.`;
+            }
+
+            if (texto.length > MENSAJE_MAXIMO) {
+                return `El mensaje no puede superar ${MENSAJE_MAXIMO} caracteres.`;
+            }
+
             return null;
         },
     };
 
-    function setFieldState(name, errorMessage) {
-        const wrapper = fields[name].closest('.field');
-        errorEls[name].textContent = errorMessage || '';
-        wrapper.classList.toggle('has-error', Boolean(errorMessage));
-        wrapper.classList.toggle('is-valid', !errorMessage && fields[name].value.trim().length > 0);
-        return !errorMessage;
+    function mostrarEstadoCampo(nombreCampo, mensajeError) {
+        const contenedor = campos[nombreCampo].closest('.field');
+
+        elementosError[nombreCampo].textContent = mensajeError || '';
+        contenedor.classList.toggle('has-error', Boolean(mensajeError));
+        contenedor.classList.toggle(
+            'is-valid',
+            !mensajeError && campos[nombreCampo].value.trim().length > 0
+        );
+
+        return !mensajeError;
     }
 
-    function validateField(name) {
-        const value = fields[name].value;
-        const error = validators[name](value);
-        return setFieldState(name, error);
+    function validarCampo(nombreCampo) {
+        const valor = campos[nombreCampo].value;
+        const mensajeError = validadores[nombreCampo](valor);
+
+        return mostrarEstadoCampo(nombreCampo, mensajeError);
     }
 
-    function updateCounter() {
-        const len = fields.mensaje.value.trim().length;
-        if (len < MENSAJE_MIN) {
-            counter.textContent = `${len} / ${MENSAJE_MAX} caracteres · faltan ${MENSAJE_MIN - len}`;
+    function actualizarContador() {
+        const longitud = campos.mensaje.value.trim().length;
+
+        if (longitud < MENSAJE_MINIMO) {
+            contador.textContent =
+                `${longitud} / ${MENSAJE_MAXIMO} caracteres · faltan ${MENSAJE_MINIMO - longitud}`;
         } else {
-            counter.textContent = `${len} / ${MENSAJE_MAX} caracteres`;
+            contador.textContent = `${longitud} / ${MENSAJE_MAXIMO} caracteres`;
         }
     }
 
-    Object.keys(fields).forEach((name) => {
-        fields[name].addEventListener('input', () => {
-            if (name === 'mensaje') updateCounter();
-            validateField(name);
+    Object.keys(campos).forEach((nombreCampo) => {
+        campos[nombreCampo].addEventListener('input', () => {
+            if (nombreCampo === 'mensaje') {
+                actualizarContador();
+            }
+
+            validarCampo(nombreCampo);
         });
-        fields[name].addEventListener('blur', () => validateField(name));
+
+        campos[nombreCampo].addEventListener('blur', () => {
+            validarCampo(nombreCampo);
+        });
     });
 
-    function handleSubmit(event) {
-        event.preventDefault();
+    function manejarEnvio(evento) {
+        const resultados = Object.keys(campos).map((nombreCampo) => {
+            return validarCampo(nombreCampo);
+        });
 
-        const results = Object.keys(fields).map((name) => validateField(name));
-        const isValid = results.every(Boolean);
+        const formularioValido = resultados.every(Boolean);
 
-        if (!isValid) {
-            feedback.textContent = 'Revisa los campos marcados en rojo antes de enviar el formulario.';
-            feedback.className = 'form__feedback error';
-            return;
+        if (!formularioValido) {
+            evento.preventDefault();
+
+            respuestaFormulario.textContent =
+                'Revisa los campos marcados en rojo antes de enviar el formulario.';
+            respuestaFormulario.className = 'form__feedback error';
         }
-
-        // --- Punto de integración futura con backend ---
-
-        feedback.textContent = '¡Listo! Tu información es válida y está lista para enviarse.';
-        feedback.className = 'form__feedback success';
-        form.reset();
-        Object.keys(fields).forEach((name) => setFieldState(name, null));
-        updateCounter();
     }
 
-    form.addEventListener('submit', handleSubmit);
-    updateCounter();
+    formulario.addEventListener('submit', manejarEnvio);
+    actualizarContador();
 })();
