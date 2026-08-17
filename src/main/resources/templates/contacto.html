@@ -30,32 +30,32 @@
         Tu mensaje fue enviado correctamente.
     </p>
 
-    <form id="contact-form" th:action="@{/contacto}" method="post" novalidate>
+    <form id="contact-form" th:action="@{/contacto}" method="post">
 
         <div class="field">
             <label for="nombre">Nombre completo <span class="req">*</span></label>
-            <input type="text" id="nombre" name="nombre"
+            <input type="text" id="nombre" name="nombre" minlength="3" required
                    placeholder="Ej: Ana María Gómez" autocomplete="name">
             <p class="field__error" id="error-nombre" aria-live="polite"></p>
         </div>
 
         <div class="field">
             <label for="correo">Correo electrónico <span class="req">*</span></label>
-            <input type="text" id="correo" name="correo"
+            <input type="email" id="correo" name="correo" required
                    placeholder="ana.gomez@correo.com" autocomplete="email">
             <p class="field__error" id="error-correo" aria-live="polite"></p>
         </div>
 
         <div class="field">
             <label for="telefono">Teléfono <span class="req">*</span></label>
-            <input type="text" id="telefono" name="telefono"
+            <input type="text" id="telefono" name="telefono" pattern="[0-9]{7,15}" required
                    placeholder="Solo números, 7 a 15 dígitos" autocomplete="tel">
             <p class="field__error" id="error-telefono" aria-live="polite"></p>
         </div>
 
         <div class="field">
             <label for="asunto">Asunto o motivo de contacto <span class="req">*</span></label>
-            <select id="asunto" name="asunto">
+            <select id="asunto" name="asunto" required>
                 <option value="">Seleccione una opción</option>
                 <option value="soporte">Soporte técnico</option>
                 <option value="sugerencia">Sugerencia de contenido</option>
@@ -67,7 +67,7 @@
 
         <div class="field">
             <label for="mensaje">Mensaje <span class="req">*</span></label>
-            <textarea id="mensaje" name="mensaje" rows="5" maxlength="400"
+            <textarea id="mensaje" name="mensaje" rows="5" minlength="20" maxlength="400" required
                       placeholder="Cuéntanos en qué podemos ayudarte (mínimo 20 caracteres)"></textarea>
             <p class="field__hint" id="counter-mensaje">0 / 400 caracteres · faltan 20</p>
             <p class="field__error" id="error-mensaje" aria-live="polite"></p>
@@ -79,6 +79,6 @@
     </form>
 </main>
 
-<!-- <script th:src="@{/js/contacto-validacion.js}"></script> -->
+<script th:src="@{/js/contacto-validacion.js}"></script>
 </body>
 </html>

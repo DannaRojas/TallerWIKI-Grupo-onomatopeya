@@ -150,22 +150,5 @@
         });
     });
 
-    function manejarEnvio(evento) {
-        const resultados = Object.keys(campos).map((nombreCampo) => {
-            return validarCampo(nombreCampo);
-        });
-
-        const formularioValido = resultados.every(Boolean);
-
-        if (!formularioValido) {
-            evento.preventDefault();
-
-            respuestaFormulario.textContent =
-                'Revisa los campos marcados en rojo antes de enviar el formulario.';
-            respuestaFormulario.className = 'form__feedback error';
-        }
-    }
-
-    formulario.addEventListener('submit', manejarEnvio);
     actualizarContador();
 })();
