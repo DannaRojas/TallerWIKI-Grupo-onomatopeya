@@ -10,56 +10,184 @@
 
 <body class="inicio-page">
     <nav class="inicio-nav">
-        <a href="inicio.html" th:href="@{/}">Inicio</a>
-        <a href="arquitectura.html" th:href="@{/arquitectura}">Arquitectura</a>
-        <a href="#proyecto">Proyecto</a>
-        <a href="contacto.html" th:href="@{/contacto}">Contáctanos</a>
+        <a th:href="@{/}">Inicio</a>
+        <a th:href="@{/arquitectura}">Arquitectura</a>
+        <a th:href="@{/historias}">Historias de usuario</a>
+        <a th:href="@{/contacto}">Contáctanos</a>
     </nav>
 
     <header class="inicio-header">
         <h1>DevWiki - Grupo Onomatopeya</h1>
         <p class="inicio-header__lead">
-            En esta wiki se mostrara la documentación tecnica del proyecto, con el fin de y el
-            objetivo de organizar, presentar y navegar información de manera estructurada
-            avance realizado por el grupo Onomatopeya.
+            Documentación técnica del Sistema de Gestión de Procesos del grupo Onomatopeya.
         </p>
     </header>
 
     <main class="inicio-main">
+        <aside class="indice-sencillo" aria-label="Contenido de Inicio">
+            <p>Contenido</p>
+            <a href="#proyecto">¿Qué es el proyecto?</a>
+            <a href="#funciones">¿Qué debe hacer?</a>
+            <a href="#ejemplo">Ejemplo de proceso</a>
+            <a href="#alcance">Alcance</a>
+            <a href="#grupo">Grupo Onomatopeya</a>
+        </aside>
+        <div class="inicio-contenido">
         <article class="inicio-card" id="proyecto">
             <h2>¿Qué es el proyecto?</h2>
             <p>
-                El proyecto consiste en crear un Sistema de Gestión de Procesos
-                multiempresa. Cada organización tendrá su propio espacio para
-                registrar usuarios y administrar sus procesos empresariales.
+                El proyecto consiste en desarrollar un visor y editor de procesos empresariales:
+                un Sistema de Gestión de Procesos multiempresa. Cada organización puede
+                registrarse, crear un espacio independiente y administrar usuarios con roles de
+                administrador, editor y solo lectura.
             </p>
             <p>
-                El proyecto del curso consiste en desarrollar un visor y editor de procesos empresariales: un Sistema de Gestión de Procesos multiempresa 
-                que permite a cada organización registrarse, crear su propio espacio independiente y administrar usuarios con distintos roles (administrador, 
-                editor y solo lectura). El sistema debe garantizar autenticación segura, control de acceso por empresa y separación de la información, 
-                asegurando que los procesos pertenezcan a la empresa y no a usuarios individuales.
-
-Es un desarrollo transversal: se construye de forma incremental durante todo el semestre y cada entrega se apoya en la anterior. Los contenidos vistos en clase se aplican directamente sobre él, de modo que al final del curso el proyecto integra persistencia, vistas server-side, servicios REST, frontend SPA, pruebas automatizadas, seguridad y despliegue.
+                El sistema garantiza autenticación, control de acceso por empresa y separación de
+                la información. Los procesos pertenecen a la empresa y no a usuarios individuales.
+            </p>
+            <p>
+                Es un desarrollo transversal e incremental durante el semestre. En cada entrega se
+                aplican los temas vistos en clase hasta integrar persistencia, vistas server-side,
+                servicios REST, frontend SPA, pruebas, seguridad y despliegue.
             </p>
         </article>
 
-        <article class="inicio-card">
-            <h2>¿Qué podrá hacer el sistema?</h2>
-            <ul>
-                <li>Registrar empresas, usuarios y roles de acceso.</li>
-                <li>Crear, editar, consultar y desactivar procesos.</li>
-                <li>Guardar el nombre, descripción, categoría y estado de cada proceso.</li>
-                <li>Modelar procesos con actividades, decisiones, roles y participantes.</li>
-                <li>Consultar el historial de cambios de los procesos.</li>
-            </ul>
+        <article class="inicio-card" id="funciones">
+            <h2>¿Qué debe hacer el sistema?</h2>
+
+            <h3>Gestión de empresas y usuarios</h3>
+            <p>
+                Permite registrar una empresa como entidad independiente, crear el usuario
+                administrador inicial, agregar colaboradores y asignar roles de acceso. El inicio
+                de sesión restringe a cada usuario a la información de su propia empresa.
+            </p>
+
+            <h3>Gestión de procesos</h3>
+            <p>
+                Permite crear, editar, consultar y eliminar procesos organizacionales, registrando
+                nombre, descripción, categoría y estado: borrador o publicado. También conserva el
+                historial de cambios, permite búsquedas y filtros y usa eliminaciones lógicas para
+                no perder la información histórica.
+            </p>
+
+            <h3>Modelado del proceso</h3>
+            <p>
+                Un proceso es un diagrama completo. El sistema permite modelar todos sus elementos.
+            </p>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Elemento</th>
+                            <th>Qué representa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Actividad</td><td>Una tarea del proceso.</td></tr>
+                        <tr><td>Arco</td><td>La secuencia del flujo entre actividades y gateways dentro de un mismo pool.</td></tr>
+                        <tr><td>Gateway</td><td>Un punto de decisión o ramificación: exclusiva, paralela o inclusiva.</td></tr>
+                        <tr><td>Rol de proceso</td><td>La función responsable de una actividad, no una persona.</td></tr>
+                        <tr><td>Pool</td><td>Un participante: la empresa, un cliente, un proveedor o un sistema externo.</td></tr>
+                        <tr><td>Lane</td><td>Una división interna del pool que agrupa actividades de un mismo rol.</td></tr>
+                        <tr><td>Mensaje</td><td>La comunicación entre pools: un participante envía y otro recibe.</td></tr>
+                        <tr><td>Correlación</td><td>El criterio que indica a qué caso concreto del proceso corresponde un mensaje.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                Todos los elementos son obligatorios. Las actividades pertenecen a una lane, los
+                arcos no cruzan pools, los mensajes sí pueden hacerlo y los roles no se eliminan
+                mientras estén en uso.
+            </p>
         </article>
 
-        <article class="inicio-card">
+        <article class="inicio-card" id="ejemplo">
+            <h2>Ejemplo: proceso de solicitud de vacaciones</h2>
+            <p>
+                Este ejemplo muestra un proceso modelado con todos los elementos del sistema. Sirve
+                como referencia de lo que un usuario puede construir con el editor.
+            </p>
+
+            <figure class="diagrama">
+                <img src="/images/proceso-vacaciones.png"
+                     th:src="@{/images/proceso-vacaciones.png}"
+                     alt="Diagrama del proceso de solicitud de vacaciones con pools, lanes, actividades, gateway y mensaje">
+                <figcaption>Proceso de solicitud de vacaciones con todos los elementos del sistema.</figcaption>
+            </figure>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>En el diagrama</th>
+                            <th>Elemento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>El recuadro exterior Empresa</td><td>Un pool: el participante dueño del proceso.</td></tr>
+                        <tr><td>Empleado, Jefe inmediato y Talento Humano</td><td>Lanes asociadas a roles de proceso.</td></tr>
+                        <tr><td>Radicar solicitud, Revisar solicitud y demás tareas</td><td>Actividades.</td></tr>
+                        <tr><td>Las flechas continuas</td><td>Arcos.</td></tr>
+                        <tr><td>El rombo con salidas Sí y No</td><td>Un gateway exclusivo.</td></tr>
+                        <tr><td>La flecha punteada al Servicio de correo</td><td>Un mensaje hacia un participante externo.</td></tr>
+                        <tr><td>Número de solicitud</td><td>La clave de correlación del mensaje.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p><strong>El sistema modela este diagrama, no lo ejecuta.</strong></p>
+            <p>
+                El usuario dibuja el proceso, lo guarda y lo consulta. No se radica una solicitud
+                real, no se envía un correo y no se descuentan días de vacaciones.
+            </p>
+        </article>
+
+        <article class="inicio-card" id="alcance">
+            <h2>Alcance</h2>
+            <p>
+                El sistema está orientado a la visualización y edición de procesos, no a su
+                ejecución. Los usuarios pueden crear, modificar, consultar y organizar procesos,
+                pero el sistema no dispara flujos automáticos ni ejecuta instancias de proceso.
+            </p>
+            <p>
+                Todos los elementos del proceso se modelan y se validan, pero ninguno se ejecuta.
+            </p>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>El sistema sí debe…</th>
+                            <th>El sistema no debe…</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Modelar actividades, arcos, gateways, pools, lanes y mensajes.</td><td>Ejecutar instancias del proceso.</td></tr>
+                        <tr><td>Asignar roles funcionales a las actividades por medio de lanes.</td><td>Usar un motor de reglas o tareas automáticas.</td></tr>
+                        <tr><td>Definir el contenido y la correlación de cada mensaje.</td><td>Entregar mensajes reales o mantener casos en espera.</td></tr>
+                        <tr><td>Documentar envíos hacia sistemas externos y su punto en el flujo.</td><td>Conectarse a servidores de correo, colas o APIs reales.</td></tr>
+                        <tr><td>Validar la coherencia del diagrama y advertir errores de modelado.</td><td>Gestionar credenciales o secretos de integración.</td></tr>
+                        <tr><td>Registrar historial de cambios y mantener el aislamiento por empresa.</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                El enfoque es académico: se evalúa la aplicación de conceptos de arquitectura web,
+                separación de responsabilidades, seguridad básica y buenas prácticas de desarrollo.
+            </p>
+        </article>
+
+        <article class="inicio-card" id="grupo">
             <h2>Grupo Onomatopeya</h2>
             <p>
-                En construión...
+                Somos el grupo responsable de documentar y construir esta propuesta de Sistema de
+                Gestión de Procesos durante el curso de Desarrollo Web.
             </p>
         </article>
+        </div>
     </main>
 </body>
 </html>

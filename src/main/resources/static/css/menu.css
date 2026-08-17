@@ -8,6 +8,92 @@
     overflow-x: auto;
 }
 
+/* Navegación compartida. */
+.menu-superior {
+    background-color: #1E3A5F;
+    border-bottom: 4px solid #E9A23B;
+}
+
+.menu-superior a { color: #FFFFFF; }
+.menu-superior a:hover,
+.menu-superior a.activo {
+    color: #FCE6B8;
+    border-bottom-color: #FCE6B8;
+}
+
+/* Los enlaces se mantienen blancos sobre el menú oscuro. */
+.menu-superior a,
+.menu-superior a.activo {
+    color: #FFFFFF !important;
+    opacity: 1;
+}
+
+.menu-superior a:hover {
+    color: #FCE6B8 !important;
+}
+
+/* Columna sencilla de enlaces internos. */
+.pagina-con-indice {
+    width: min(1180px, calc(100% - 40px));
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    align-items: start;
+    gap: 32px;
+}
+
+.contenido-pagina { min-width: 0; }
+
+.indice-sencillo {
+    position: sticky;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 22px;
+    background: #FFFFFF !important;
+    border: 0;
+    border-radius: 0;
+    box-shadow: 0 8px 20px rgba(30, 58, 95, 0.08);
+}
+
+.indice-sencillo p {
+    margin: 0 0 8px;
+    color: #1E3A5F;
+    font-weight: 700;
+}
+
+.indice-sencillo a {
+    display: block !important;
+    width: 100%;
+    margin: 0 0 16px;
+    padding: 2px 0;
+    line-height: 1.4;
+    color: #2E6F9E;
+    font-size: 0.92rem;
+    text-decoration: none;
+}
+
+.indice-sencillo a:last-child { margin-bottom: 0; }
+
+.indice-sencillo a:hover {
+    color: #1E3A5F;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+@media (max-width: 760px) {
+    .pagina-con-indice {
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .indice-sencillo {
+        position: static;
+        margin: 0 20px;
+    }
+}
+
 .menu-superior a {
     color: #52606D;
     font-size: 0.9rem;

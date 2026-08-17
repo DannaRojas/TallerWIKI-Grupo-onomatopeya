@@ -49,6 +49,12 @@
         li {
             margin-bottom: 10px;
         }
+
+        /* Paleta compartida con el resto de la Wiki. */
+        body { background-color: #F3F7FB; }
+        h1, h2, h3 { color: #1E3A5F; }
+        article { border: 2px solid #B8CFE4; border-radius: 12px; }
+        pre { border-left: 0; }
     </style>
 </head>
 
@@ -60,13 +66,20 @@
         <a href="contacto.html" th:href="@{/contacto}">Contáctanos</a>
     </nav>
 
-    <main>
+    <main class="pagina-con-indice">
+        <aside class="indice-sencillo" aria-label="Contenido de Arquitectura">
+            <p>Contenido</p>
+            <a href="#estructura">Estructura</a>
+            <a href="#mvc">Flujo MVC</a>
+            <a href="#dependencias">Dependencias</a>
+        </aside>
+        <div class="contenido-pagina">
         <h1 th:text="${titulo}">Arquitectura</h1>
         <p class="introduccion" th:text="${descripcion}">
             Organización principal de DevWiki y herramientas usadas en el proyecto.
         </p>
 
-        <article>
+        <article id="estructura">
             <h2>Estructura del proyecto</h2>
             <p>
                 Las carpetas separan el código Java, las vistas HTML, los estilos,
@@ -144,7 +157,7 @@
                 </li>
             </ul>
 
-            <h3>Flujo MVC</h3>
+            <h3 id="mvc">Flujo MVC</h3>
             <p>
                 El proyecto sigue el patrón Modelo, Vista y Controlador. Primero, el
                 navegador solicita una ruta. Después, Spring busca el controlador
@@ -223,7 +236,7 @@
             </p>
         </article>
 
-        <article>
+        <article id="dependencias">
             <h2>Dependencias</h2>
             <ul>
                 <li><strong>Thymeleaf:</strong> crea las vistas HTML dinámicas.</li>
@@ -232,6 +245,7 @@
                 <li><strong>Dependencias de prueba:</strong> permiten comprobar el funcionamiento del proyecto.</li>
             </ul>
         </article>
+        </div>
     </main>
 </body>
 </html>

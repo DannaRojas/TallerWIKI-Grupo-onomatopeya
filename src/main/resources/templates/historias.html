@@ -16,13 +16,23 @@
         <a href="contacto.html" th:href="@{/contacto}">Contáctanos</a>
     </nav>
 
-    <main>
+<main class="pagina-con-indice">
+    <aside class="indice-sencillo" aria-label="Contenido de Historias de usuario">
+        <p>Contenido</p>
+        <a href="#empresas">Empresas y usuarios</a>
+        <a href="#procesos">Procesos</a>
+        <a href="#modelado">Modelado</a>
+        <a href="#roles">Roles</a>
+        <a href="#pools">Pools y lanes</a>
+        <a href="#mensajes">Mensajes</a>
+    </aside>
+    <div class="contenido-pagina">
         <h1 th:text="${titulo}">Historias de usuario</h1>
         <p class="introduccion" th:text="${descripcion}">
             Historias de usuario del proyecto Editor y visualizador de procesos.
         </p>
 
-        <section>
+        <section id="empresas">
             <h2>Gestión de empresas y usuarios</h2>
             <ul>
                 <li th:each="historia : ${usuarios}" th:text="${historia}">
@@ -31,7 +41,7 @@
             </ul>
         </section>
 
-        <section>
+        <section id="procesos">
             <h2>Gestión de procesos</h2>
             <ul>
                 <li th:each="historia : ${procesos}" th:text="${historia}">
@@ -40,7 +50,7 @@
             </ul>
         </section>
 
-        <section>
+        <section id="modelado">
             <h2>Actividades, arcos y gateways</h2>
             <ul>
                 <li th:each="historia : ${modelado}" th:text="${historia}">
@@ -49,7 +59,7 @@
             </ul>
         </section>
 
-        <section>
+        <section id="roles">
             <h2>Roles del proceso</h2>
             <ul>
                 <li th:each="historia : ${roles}" th:text="${historia}">
@@ -58,7 +68,7 @@
             </ul>
         </section>
 
-        <section>
+        <section id="pools">
             <h2>Pools y lanes</h2>
             <p>Organizan los participantes y responsables de cada actividad.</p>
             <ul>
@@ -68,7 +78,7 @@
             </ul>
         </section>
 
-        <section>
+        <section id="mensajes">
             <h2>Mensajes entre procesos</h2>
             <p>Representan la comunicación entre procesos y sistemas externos.</p>
             <ul>
@@ -77,6 +87,7 @@
                 </li>
             </ul>
         </section>
+    </div>
     </main>
 </body>
 </html>

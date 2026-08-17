@@ -37,3 +37,11 @@ section h2 {
 li {
     margin-bottom: 8px;
 }
+
+/* Paleta compartida. */
+body { background-color: #F3F7FB; }
+h1, section h2 { color: #1E3A5F; }
+section {
+    border: 2px solid #B8CFE4;
+    border-radius: 12px;
+}

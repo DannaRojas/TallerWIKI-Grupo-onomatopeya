@@ -99,3 +99,26 @@
     font-size: 0.95rem;
 }
 .btn:hover { background: #2F6F6A; }
+
+/* Paleta compartida. */
+.contacto-page { background: #F3F7FB; }
+.contacto-header__back { color: #2E6F9E; }
+.contacto-header h1 { color: #1E3A5F; }
+.form { border: 2px solid #B8CFE4; border-radius: 12px; }
+.field input:focus, .field select:focus, .field textarea:focus { outline-color: #2E6F9E; }
+.field.is-valid input, .field.is-valid select, .field.is-valid textarea { border-color: #2E6F9E; }
+.form__feedback.success { color: #2E6F9E; border-color: #2E6F9E; }
+.btn:hover { background: #2E6F9E; }
+
+.contacto-main.pagina-con-indice {
+    max-width: 1180px;
+    display: grid;
+    grid-template-columns: 190px minmax(0, 640px);
+    justify-content: center;
+}
+
+@media (max-width: 760px) {
+    .contacto-main.pagina-con-indice {
+        grid-template-columns: 1fr;
+    }
+}
