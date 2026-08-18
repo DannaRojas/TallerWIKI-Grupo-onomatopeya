@@ -23,7 +23,6 @@
     };
 
     const contador = document.getElementById('counter-mensaje');
-    const respuestaFormulario = document.getElementById('form-feedback');
 
     const MENSAJE_MINIMO = 20;
     const MENSAJE_MAXIMO = 400;
