@@ -249,20 +249,30 @@ html {
     .integrantes { grid-template-columns: 1fr; }
 }
 
-/* Paleta simple compartida con las demás páginas. */
-.inicio-page { background: #F3F7FB; }
-.inicio-nav { background: #1E3A5F; border-bottom-color: #E9A23B; }
-.inicio-nav a:hover { color: #FCE6B8; }
+.inicio-page { background: #F3EFE7; color: #302D29; }
+.inicio-nav { background: #302D29; border-bottom: 0; }
+.inicio-nav a:hover { color: #F2C9B5; }
 .inicio-header h1,
 .inicio-card h2,
-.indice-inicio__titulo { color: #1E3A5F; }
+.inicio-page .indice-sencillo p { color: #302D29; }
 .inicio-card h3,
-.indice-inicio a { color: #2E6F9E; }
-.indice-inicio a:hover { color: #1E3A5F; }
+.inicio-page .indice-sencillo a,
+.integrante .integrante__rol,
+.integrante__enlaces a { color: #A95136; }
+.inicio-page .indice-sencillo a:hover { color: #302D29; }
+.inicio-header__lead,
+.diagrama figcaption { color: #6F675F; }
 .inicio-card,
-.indice-inicio,
-.diagrama { border-color: #B8CFE4; }
-.inicio-card,
-.indice-inicio { box-shadow: 0 6px 16px rgba(30, 58, 95, 0.08); }
-.inicio-card th { background: #2E6F9E; }
-.inicio-card tbody tr:nth-child(even) { background: #F3F7FB; }
+.inicio-page .indice-sencillo,
+.integrante,
+.diagrama {
+    background: #FFFCF7 !important;
+    border: 0;
+    border-radius: 7px;
+    box-shadow: 0 5px 18px rgba(66, 51, 40, 0.07);
+}
+.integrante__foto,
+.diagrama img,
+.tabla-contenedor { border: 0; }
+.inicio-card th { background: #A95136; }
+.inicio-card tbody tr:nth-child(even) { background: #F8EEE7; }

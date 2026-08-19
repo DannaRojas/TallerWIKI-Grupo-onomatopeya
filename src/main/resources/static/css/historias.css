@@ -39,9 +39,18 @@ li {
 }
 
 /* Paleta compartida. */
-body { background-color: #F3F7FB; }
-h1, section h2 { color: #1E3A5F; }
+body {
+    background-color: #F3EFE7;
+    color: #302D29;
+}
+
+h1, section h2 { color: #302D29; }
+
+.introduccion { color: #6F675F; }
+
 section {
-    border: 2px solid #B8CFE4;
-    border-radius: 12px;
+    background-color: #FFFCF7;
+    border: 0;
+    border-radius: 7px;
+    box-shadow: 0 5px 18px rgba(66, 51, 40, 0.07);
 }

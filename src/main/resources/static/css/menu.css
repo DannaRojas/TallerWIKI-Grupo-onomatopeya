@@ -10,15 +10,15 @@
 
 /* Navegación compartida. */
 .menu-superior {
-    background-color: #1E3A5F;
-    border-bottom: 4px solid #E9A23B;
+    background-color: #302D29;
+    border-bottom: 0;
 }
 
 .menu-superior a { color: #FFFFFF; }
 .menu-superior a:hover,
 .menu-superior a.activo {
-    color: #FCE6B8;
-    border-bottom-color: #FCE6B8;
+    color: #F2C9B5;
+    border-bottom-color: transparent;
 }
 
 /* Los enlaces se mantienen blancos sobre el menú oscuro. */
@@ -29,7 +29,7 @@
 }
 
 .menu-superior a:hover {
-    color: #FCE6B8 !important;
+    color: #F2C9B5 !important;
 }
 
 /* Columna sencilla de enlaces internos. */
@@ -50,15 +50,16 @@
     flex-direction: column;
     align-items: stretch;
     padding: 22px;
-    background: #FFFFFF !important;
+    background: #FFFCF7 !important;
     border: 0;
     border-radius: 0;
-    box-shadow: 0 8px 20px rgba(30, 58, 95, 0.08);
+    border-radius: 7px;
+    box-shadow: 0 5px 18px rgba(66, 51, 40, 0.07);
 }
 
 .indice-sencillo p {
     margin: 0 0 8px;
-    color: #1E3A5F;
+    color: #302D29;
     font-weight: 700;
 }
 
@@ -68,7 +69,7 @@
     margin: 0 0 16px;
     padding: 2px 0;
     line-height: 1.4;
-    color: #2E6F9E;
+    color: #A95136;
     font-size: 0.92rem;
     text-decoration: none;
 }
@@ -76,7 +77,7 @@
 .indice-sencillo a:last-child { margin-bottom: 0; }
 
 .indice-sencillo a:hover {
-    color: #1E3A5F;
+    color: #302D29;
     font-weight: 700;
     text-decoration: underline;
 }
@@ -103,13 +104,41 @@
 }
 
 .menu-superior a:hover {
-    color: #2F6F6A;
+    color: #F2C9B5;
 }
 
 .menu-superior a.activo {
-    color: #2F6F6A;
-    border-bottom: 2px solid #2F6F6A;
+    color: #F2C9B5;
+    border-bottom: 0;
     padding-bottom: 4px;
+}
+
+body {
+    background-color: #F3EFE7 !important;
+    color: #302D29 !important;
+}
+
+.contenido-pagina > article,
+.contenido-pagina > section {
+    background-color: #FFFCF7 !important;
+    border: 0 !important;
+    border-radius: 7px !important;
+    box-shadow: 0 5px 18px rgba(66, 51, 40, 0.07);
+}
+
+.contenido-pagina h1,
+.contenido-pagina h2,
+.contenido-pagina h3 {
+    color: #302D29 !important;
+}
+
+.contenido-pagina .introduccion {
+    color: #6F675F;
+}
+
+.contenido-pagina pre {
+    background-color: #FFFCF7 !important;
+    border-color: #D9CFC3 !important;
 }
 
 @media (max-width: 600px) {

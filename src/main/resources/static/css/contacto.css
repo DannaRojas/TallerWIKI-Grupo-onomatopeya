@@ -27,14 +27,15 @@
     padding: 20px 20px 60px;
 }
 
-.form {
-    background: #FFFFFF;
-    border: 1px solid #DCE3E8;
-    border-radius: 10px;
+#contact-form {
+    background: #FFFCF7;
+    border: 0;
+    border-radius: 7px;
     padding: 26px;
     display: flex;
     flex-direction: column;
     gap: 18px;
+    box-shadow: 0 5px 18px rgba(66, 51, 40, 0.07);
 }
 .field { display: flex; flex-direction: column; gap: 6px; }
 .field label { font-weight: 600; font-size: 0.9rem; }
@@ -101,14 +102,16 @@
 .btn:hover { background: #2F6F6A; }
 
 /* Paleta compartida. */
-.contacto-page { background: #F3F7FB; }
-.contacto-header__back { color: #2E6F9E; }
-.contacto-header h1 { color: #1E3A5F; }
-.form { border: 2px solid #B8CFE4; border-radius: 12px; }
-.field input:focus, .field select:focus, .field textarea:focus { outline-color: #2E6F9E; }
-.field.is-valid input, .field.is-valid select, .field.is-valid textarea { border-color: #2E6F9E; }
-.form__feedback.success { color: #2E6F9E; border-color: #2E6F9E; }
-.btn:hover { background: #2E6F9E; }
+.contacto-page { background: #F3EFE7; color: #302D29; }
+.contacto-header__back { color: #A95136; }
+.contacto-header h1 { color: #302D29; }
+.contacto-header__lead { color: #6F675F; }
+.field input, .field select, .field textarea { background: #FFFCF7; border-color: #D9CFC3; }
+.field input:focus, .field select:focus, .field textarea:focus { outline-color: #A95136; }
+.field.is-valid input, .field.is-valid select, .field.is-valid textarea { border-color: #A95136; }
+.form__feedback.success { color: #A95136; border-color: #A95136; }
+.btn { background: #302D29; }
+.btn:hover { background: #A95136; }
 
 .contacto-main.pagina-con-indice {
     max-width: 1180px;
