@@ -41,6 +41,17 @@
     gap: 32px;
 }
 
+/* Acerca las tarjetas al encabezado de cada p?gina. */
+main.pagina-con-indice {
+    margin: 0 auto 40px;
+    padding: 0 20px 20px;
+}
+
+.contenido-pagina > article:first-child,
+.contenido-pagina > section:first-child {
+    margin-top: 0;
+}
+
 .contenido-pagina { min-width: 0; }
 
 .indice-sencillo {
