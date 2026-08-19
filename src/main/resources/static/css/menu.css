@@ -39,16 +39,18 @@
     width: min(1180px, calc(100% - 40px));
     margin-left: auto;
     margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
     display: grid;
-    grid-template-columns: 190px minmax(0, 1fr);
+    grid-template-columns: 140px minmax(0, 1fr) 140px;
     align-items: start;
-    gap: 32px;
+    gap: 20px;
 }
 
 /* Acerca las tarjetas al encabezado de cada p?gina. */
 main.pagina-con-indice {
     margin: 0 auto 40px;
-    padding: 0 20px 20px;
+    padding: 0 0 20px;
 }
 
 .contenido-pagina > article:first-child,
