@@ -21,6 +21,7 @@ html {
     padding: 18px 20px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 28px;
     overflow-x: auto;
 }
@@ -239,7 +240,7 @@ html {
     }
 
     .inicio-nav {
-        justify-content: flex-start;
+        justify-content: center;
     }
 
     .diagrama {
@@ -279,3 +280,10 @@ html {
 .tabla-contenedor { border: 0; }
 .inicio-card th { background: #A95136; }
 .inicio-card tbody tr:nth-child(even) { background: #F8EEE7; }
+
+.inicio-header,
+.inicio-header *,
+.inicio-main,
+.inicio-main * {
+    color: #000000 !important;
+}

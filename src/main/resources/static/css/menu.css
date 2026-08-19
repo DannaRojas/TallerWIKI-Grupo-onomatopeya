@@ -4,6 +4,7 @@
     padding: 18px 20px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 35px;
     overflow-x: auto;
 }
@@ -34,7 +35,10 @@
 
 /* Columna sencilla de enlaces internos. */
 .pagina-con-indice {
+    box-sizing: border-box;
     width: min(1180px, calc(100% - 40px));
+    margin-left: auto;
+    margin-right: auto;
     display: grid;
     grid-template-columns: 190px minmax(0, 1fr);
     align-items: start;
@@ -154,13 +158,14 @@ body {
 
 @media (max-width: 600px) {
     .menu-superior {
-        justify-content: flex-start;
+        justify-content: center;
         gap: 22px;
     }
 }
 
 /* Encabezado compartido: mismo formato visual que la p?gina de Inicio. */
 .pagina-header {
+    box-sizing: border-box;
     width: min(1180px, calc(100% - 40px));
     margin: 0 auto;
     padding: 40px 20px 10px;
@@ -175,3 +180,19 @@ body {
 
 .pagina-header p { margin: 0; color: #6F675F; }
 .contenido-pagina > h1, .contenido-pagina > .introduccion { display: none; }
+
+.pagina-header,
+.pagina-header *,
+.contenido-pagina,
+.contenido-pagina *,
+.indice-sencillo,
+.indice-sencillo * {
+    color: #000000 !important;
+}
+
+.contenido-pagina h1,
+.contenido-pagina h2,
+.contenido-pagina h3,
+.contenido-pagina .introduccion {
+    color: #000000 !important;
+}

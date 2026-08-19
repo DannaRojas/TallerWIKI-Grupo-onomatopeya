@@ -6,6 +6,7 @@
 }
 
 .contacto-header {
+    box-sizing: border-box;
     max-width: 640px;
     margin: 0 auto;
     padding: 40px 20px 10px;
@@ -22,6 +23,7 @@
 .contacto-header__lead { color: #52606D; margin: 0; }
 
 .contacto-main {
+    box-sizing: border-box;
     max-width: 640px;
     margin: 0 auto;
     padding: 20px 20px 60px;
@@ -124,4 +126,16 @@
     .contacto-main.pagina-con-indice {
         grid-template-columns: 1fr;
     }
+}
+
+.contacto-header,
+.contacto-header *,
+.contacto-main,
+.contacto-main * {
+    color: #000000 !important;
+}
+
+.contacto-main .btn,
+.contacto-main .btn:hover {
+    color: #FFFFFF !important;
 }
