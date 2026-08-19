@@ -147,3 +147,19 @@ body {
         gap: 22px;
     }
 }
+
+/* Encabezado compartido: mismo formato visual que la p?gina de Inicio. */
+.pagina-header {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 40px 20px 10px;
+}
+
+.pagina-header h1 {
+    margin: 0 0 8px;
+    color: #302D29;
+    font-size: 2rem;
+}
+
+.pagina-header p { margin: 0; color: #6F675F; }
+.contenido-pagina > h1, .contenido-pagina > .introduccion { display: none; }

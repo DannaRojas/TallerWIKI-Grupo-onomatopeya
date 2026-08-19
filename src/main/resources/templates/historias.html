@@ -16,6 +16,13 @@
         <a href="contacto.html" th:href="@{/contacto}">Contáctanos</a>
     </nav>
 
+    <header class="pagina-header">
+        <h1 th:text="${titulo}">Historias de usuario</h1>
+        <p th:text="${descripcion}">
+            Historias de usuario del proyecto Editor y visualizador de procesos.
+        </p>
+    </header>
+
 <main class="pagina-con-indice">
     <aside class="indice-sencillo" aria-label="Contenido de Historias de usuario">
         <p>Contenido</p>

@@ -127,7 +127,7 @@ html {
 
 .inicio-card h3 {
     margin: 28px 0 8px;
-    color: #4F46E5;
+    color: #A95136;
     font-size: 1.1rem;
 }
 
@@ -254,7 +254,7 @@ html {
 .inicio-nav a:hover { color: #F2C9B5; }
 .inicio-header h1,
 .inicio-card h2,
-.inicio-page .indice-sencillo p { color: #302D29; }
+.inicio-page .indice-sencillo p { color: #664e2e; }
 .inicio-card h3,
 .inicio-page .indice-sencillo a,
 .integrante .integrante__rol,
@@ -272,6 +272,9 @@ html {
     box-shadow: 0 5px 18px rgba(66, 51, 40, 0.07);
 }
 .integrante__foto,
+
+/* Enlaces de integrantes en columna. */
+.integrante__enlaces { flex-direction: column; align-items: center; gap: 6px; }
 .diagrama img,
 .tabla-contenedor { border: 0; }
 .inicio-card th { background: #A95136; }

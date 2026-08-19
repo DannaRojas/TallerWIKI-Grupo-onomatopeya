@@ -55,7 +55,16 @@
         h1, h2, h3 { color: #1E3A5F; }
         article { border: 2px solid #B8CFE4; border-radius: 12px; }
         pre { border-left: 0; }
+        /* Mismo estilo de Inicio: tarjetas amplias, blancas y sin bordes de color. */
+        main.pagina-con-indice { width: min(1180px, calc(100% - 40px)); max-width: none; }
+        article { padding: 52px; border: 0; border-radius: 7px; box-shadow: 0 5px 18px rgba(66, 51, 40, 0.07); }
+        @media (max-width: 600px) {
+            main.pagina-con-indice { width: 100%; }
+            article { padding: 28px 22px; }
+        }
+
     </style>
+
 </head>
 
 <body>
@@ -65,6 +74,13 @@
         <a href="historias.html" th:href="@{/historias}">Historias de usuario</a>
         <a href="contacto.html" th:href="@{/contacto}">Contáctanos</a>
     </nav>
+
+    <header class="pagina-header">
+        <h1 th:text="${titulo}">Arquitectura</h1>
+        <p th:text="${descripcion}">
+            Organizaci?n principal de DevWiki y herramientas usadas en el proyecto.
+        </p>
+    </header>
 
     <main class="pagina-con-indice">
         <aside class="indice-sencillo" aria-label="Contenido de Arquitectura">

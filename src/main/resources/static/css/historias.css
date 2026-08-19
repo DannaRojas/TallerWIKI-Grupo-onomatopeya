@@ -54,3 +54,12 @@ section {
     border-radius: 7px;
     box-shadow: 0 5px 18px rgba(66, 51, 40, 0.07);
 }
+
+/* Mismo estilo de Inicio: tarjetas amplias, blancas y sin bordes de color. */
+main.pagina-con-indice { width: min(1180px, calc(100% - 40px)); max-width: none; }
+section { padding: 46px 52px; border: 0; border-radius: 7px; box-shadow: 0 5px 18px rgba(66, 51, 40, 0.07); }
+@media (max-width: 600px) {
+    main.pagina-con-indice { width: 100%; }
+    section { padding: 28px 22px; }
+}
+
