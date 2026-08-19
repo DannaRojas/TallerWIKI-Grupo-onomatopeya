@@ -62,6 +62,29 @@ TallerWIKI-Grupo-onomatopeya/
 └── README.md
 ```
 
+## Dónde se utiliza Thymeleaf
+
+Thymeleaf permite que las vistas HTML reciban datos desde los controladores de Spring Boot. En este proyecto se utiliza en las plantillas de `src/main/resources/templates/`.
+
+| Vista | Uso de Thymeleaf |
+| --- | --- |
+| `inicio.html` | Usa `th:href` y `th:src` para construir enlaces e imágenes con rutas correctas. |
+| `arquitectura.html` | Usa `th:text` para mostrar el título y la descripción enviados por `ArquitecturaController`. |
+| `historias.html` | Usa `th:each` para recorrer las listas de historias de usuario enviadas por `HistoriasController`. |
+| `contacto.html` | Usa `th:action` para enviar el formulario a `/contacto`, `th:if` para mostrar el mensaje de éxito y `th:text` para escribir ese mensaje. |
+
+Ejemplo de historia de usuario mostrada dinámicamente:
+
+```html
+<li th:each="historia : ${usuarios}" th:text="${historia}"></li>
+```
+
+Ejemplo del mensaje que aparece después de guardar el formulario:
+
+```html
+<p th:if="${mensajeExito}" th:text="${mensajeExito}"></p>
+```
+
 ## Arquitectura MVC
 
 La aplicación usa el patrón Modelo–Vista–Controlador:
@@ -221,4 +244,3 @@ git stash pop
 | Sebastián Peralta | Pruebas de calidad (QA) y Desarrollo |
 | María Camila Ariza Gamboa | Docker, contenedorización y despliegue |
 | Laura Valentina Ladino Rivera | Formulario de contacto, Frontend y Backend |
-
