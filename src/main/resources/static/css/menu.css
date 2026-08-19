@@ -153,6 +153,7 @@ body {
     width: min(1180px, calc(100% - 40px));
     margin: 0 auto;
     padding: 40px 20px 10px;
+    text-align: center;
 }
 
 .pagina-header h1 {

@@ -43,6 +43,7 @@ html {
     max-width: 1000px;
     margin: 0 auto;
     padding: 40px 20px 10px;
+    text-align: center;
 }
 
 .inicio-header h1 {
@@ -254,7 +255,7 @@ html {
 .inicio-nav a:hover { color: #F2C9B5; }
 .inicio-header h1,
 .inicio-card h2,
-.inicio-page .indice-sencillo p { color: #664e2e; }
+.inicio-page .indice-sencillo p { color: #302D29; }
 .inicio-card h3,
 .inicio-page .indice-sencillo a,
 .integrante .integrante__rol,
