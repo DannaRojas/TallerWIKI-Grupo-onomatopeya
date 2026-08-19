@@ -240,7 +240,7 @@ git stash pop
 
 | Integrante | Rol principal |
 | --- | --- |
-| Danna Gabriela Rojas Bernal | Liderazgo del equipo y Backend |
+| Danna Gabriela Rojas Bernal | Liderazgo del equipo y Desarrollo |
 | Sebastián Peralta | Pruebas de calidad (QA) y Desarrollo |
-| María Camila Ariza Gamboa | Docker, contenedorización y despliegue |
-| Laura Valentina Ladino Rivera | Formulario de contacto, Frontend y Backend |
+| María Camila Ariza Gamboa | Docker y despliegue |
+| Laura Valentina Ladino Rivera | Formulario de contacto, Desarrollo  |
